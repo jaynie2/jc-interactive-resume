@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide Puzzle - Select Level</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+     <!-- Home Icon and Main Menu -->
+     <div id="home_menu">
+        <a href="#" class="home_icon" onclick="toggleModal()">
+            <i class="fas fa-home"></i>
+            <span>Main Menu</span>
+        </a>
+    </div>
+
+    <!-- Modal for Home Menu -->
+    <div id="home_modal" class="modal">
+        <div class="modal_content">
+            <span class="close" onclick="toggleModal()">&times;</span>
+            <h2>Main Menu</h2>
+            <a href="start.html" class="menu_button">Home</a>
+        </div>
+    </div>
+
+    <!-- Game Information -->
+    <div id="game_area">
+        <div id="game_info">
+            <div id="preview_container">
+                <h3>Preview</h3>
+                <img src="images/baby.png" alt="Completed Puzzle" id="preview_image">
+            </div>
+            <div id="stats_container">
+                <div id="timer">
+                    <i class="fas fa-clock"></i>
+                    <span id="time">00:00</span>
+                </div>
+                <div id="turns">
+                    <i class="fas fa-sync-alt"></i>
+                    <span id="turn_count">0</span> Moves
+                </div>
+            </div>
+        </div>
+        <div id="puzzle_container">
+            <div id="puzzle_container">
+                <div class="puzzle_block block11"></div>
+                <div class="puzzle_block block12"></div>
+                <div class="puzzle_block block13"></div>
+                <div class="puzzle_block block14"></div>
+                <div class="puzzle_block block15"></div>
+                <div class="puzzle_block block16"></div>
+                <div class="puzzle_block block17"></div>
+                <div class="puzzle_block block18"></div>
+            </div>
+        </div>
+    </div>
+
+     <!-- Congratulations Modal -->
+<div id="congratulations_modal" class="modal_1" style="display: none;">
+    <div class="modal_content1">
+        <h2>Congratulations!</h2>
+        <p>You already solved the puzzle!</p>
+        <button id="next_button">Next</button>
+    </div>
+</div> 
+
+    <!-- Difficulty Container -->
+    <div id="difficulty_container">
+        <div class="difficulty_button active">EASY</div>
+        <div class="difficulty_button">MEDIUM</div>
+        <div class="difficulty_button">HARD</div>
+    </div>
+    </div>
+    <script src="medium_script.js"></script>
+    <script>
+        function showNextModal(modalNumber) {
+            // Hide all modals
+            for (let i = 1; i <= 6; i++) {
+                document.getElementById('modal_' + i).classList.remove('show');
+            }
+            // Show the specified modal
+            document.getElementById('modal_' + modalNumber).classList.add('show');
+        }
+
+        function startGame() {
+            // Hide all modals and show the level selection screen
+            for (let i = 1; i <= 6; i++) {
+                document.getElementById('modal_' + i).style.display = 'none';
+            }
+            document.getElementById('level_selection').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

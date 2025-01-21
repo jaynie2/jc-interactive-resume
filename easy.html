@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SLIDE PUZZLE</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Link to Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+<!-- Modal 1 -->
+<div id="modal_1" class="modal show">
+    <div class="character_image">
+        <img src="images/cartoon.gif" alt="Character Image">
+    </div>
+    <div class="Character_modal_content">
+        <div class="speech_bubble">
+            <p class="typewriter-text">Before we start the game, I will first explain the instructions.</p>
+            <button class="menu_button" onclick="showNextModal(2)">Next</button>
+        </div>
+    </div>
+</div>
+<!-- Modal 2 -->
+<div id="modal_2" class="modal">
+    <div class="character_image">
+        <img src="images/cartoon.gif" alt="Character Image">
+    </div>
+    <div class="Character_modal_content">
+        <div class="speech_bubble">
+            <p class="typewriter-text">You can see a preview of the puzzle, showing the complete picture to help you solve it more easily.</p>
+            <button class="menu_button" onclick="showNextModal(3)">Next</button>
+        </div>
+    </div>
+</div>
+<!-- Modal 3 -->
+<div id="modal_3" class="modal">
+    <div class="character_image">
+        <img src="images/cartoon.gif" alt="Character Image">
+    </div>
+    <div class="Character_modal_content">
+        <div class="speech_bubble">
+            <p class="typewriter-text">At the bottom of the puzzle, you can select the difficulty level that you prefer
+            </p>
+            <button class="menu_button" onclick="showNextModal(4)">Next</button>
+        </div>
+    </div>
+</div>
+<!-- Modal 4 -->
+<div id="modal_4" class="modal">
+    <div class="character_image">
+        <img src="images/cartoon.gif" alt="Character Image">
+    </div>
+    <div class="Character_modal_content">
+        <div class="speech_bubble">
+            <p class="typewriter-text">You can also refresh the puzzle in the difficulty level if you find it difficult to solve it. </p>
+            <button class="menu_button" onclick="showNextModal(5)">Next</button>
+        </div>
+    </div>
+</div>
+<!-- Modal 5 -->
+<div id="modal_5" class="modal">
+    <div class="character_image">
+        <img src="images/cartoon.gif" alt="Character Image">
+    </div>
+    <div class="Character_modal_content">
+        <div class="speech_bubble">
+            <p class="typewriter-text">Simply click on a tile adjacent to the empty space to move it.</p>
+            <button class="menu_button" onclick="showNextModal(6)">Next</button>
+        </div>
+    </div>
+</div>
+<!-- Modal 6 -->
+<div id="modal_6" class="modal">
+    <div class="character_image">
+        <img src="images/cartoon.gif" alt="Character Image">
+    </div>
+    <div class="Character_modal_content">
+        <div class="speech_bubble">
+            <p class="typewriter-text">You win the game when the entire image is properly aligned.</p>
+            <button class="menu_button" onclick="showNextModal(7)">Next</button>
+        </div>
+    </div>
+</div>
+<!-- Modal 7 -->
+<div id="modal_7" class="modal">
+    <div class="character_image">
+        <img src="images/cartoon.gif" alt="Character Image">
+    </div>
+    <div class="Character_modal_content">
+        <div class="speech_bubble">
+            <p class="typewriter-text">Great! Let’s begin our journey. Good luck!</p>
+            <button class="menu_button" onclick="startGame()">Start Game</button>
+        </div>
+    </div>
+</div>
+    <!-- Home Icon and Main Menu -->
+    <div id="home_menu">
+        <a href="#" class="home_icon" onclick="toggleModal()">
+            <i class="fas fa-home"></i>
+            <span>Main Menu</span>
+        </a>
+    </div>
+
+    <!-- Modal for Home Menu -->
+    <div id="home_modal" class="modal">
+        <div class="modal_content">
+            <span class="close" onclick="toggleModal()">&times;</span>
+            <h2>Main Menu</h2>
+            <a href="start.html" class="menu_button">Home</a>
+        </div>
+    </div>
+
+    <!-- Game Information -->
+    <div id="game_area">
+        <div id="game_info">
+            <div id="preview_container">
+                <h3>Preview</h3>
+                <img src="images/NICE.png" alt="Completed Puzzle" id="preview_image">
+            </div>
+            <div id="stats_container">
+                <div id="timer">
+                    <i class="fas fa-clock"></i>
+                    <span id="time">00:00</span>
+                </div>
+                <div id="turns">
+                    <i class="fas fa-sync-alt"></i>
+                    <span id="turn_count">0</span> Moves
+                </div>
+            </div>
+        </div>
+        <div id="puzzle_container">
+            <div id="puzzle_container">
+                <div class="puzzle_block block1"></div>
+                <div class="puzzle_block block2"></div>
+                <div class="puzzle_block block3"></div>
+                <div class="puzzle_block block4"></div>
+                <div class="puzzle_block block5"></div>
+                <div class="puzzle_block block6"></div>
+                <div class="puzzle_block block7"></div>
+                <div class="puzzle_block block8"></div>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <!-- Difficulty Container -->
+    <div id="difficulty_container">
+        <div class="difficulty_button active">Easy</div>
+        <div class="difficulty_button">Medium</div>
+        <div class="difficulty_button">Hard</div>
+    </div>
+
+    <!-- Congratulations Modal -->
+<div id="congratulations_modal" class="modal_1" style="display: none;">
+    <div class="modal_content1">
+        <h2>Congratulations!</h2>
+        <p>You already solved the puzzle!</p>
+        <button id="next_button">Next</button>
+    </div>
+</div>
+
+
+    <script src="script.js"></script>
+    <script>
+    function showNextModal(modalNumber) {
+        // Hide all modals
+        for (let i = 1; i <=7; i++) { // Adjusted to loop through all modals (1 to 9)
+            document.getElementById('modal_' + i).classList.remove('show');
+        }
+        // Show the specified modal
+        const nextModal = document.getElementById('modal_' + modalNumber);
+        if (nextModal) {
+            nextModal.classList.add('show');
+        }
+    }
+
+    function startGame() {
+        // Hide all modals
+        for (let i = 1; i <= 9; i++) {
+            document.getElementById('modal_' + i).style.display = 'none';
+        }
+        // Show the game area
+        document.getElementById('game_area');
+    }
+    </script>
+
+</body>
+</html>
